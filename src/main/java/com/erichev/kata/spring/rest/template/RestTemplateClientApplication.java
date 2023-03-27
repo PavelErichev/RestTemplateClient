@@ -18,15 +18,15 @@ public class RestTemplateClientApplication {
 	static User userTwo = new User(3L,"Thomas","Shelby", (byte) 20);
 
 	public static void main(String[] args) {
-		System.out.println(stringOne(madeCookie()));
+		System.out.println(concatenateFinalString(configurationCookie()));
 		//SpringApplication.run(RestTemplateClientApplication.class, args);
 	}
 
-	public static String stringOne(HttpHeaders headers) {
+	public static String concatenateFinalString(HttpHeaders headers) {
 		return createUser(userOne,headers).getBody() + updateUser(userTwo, headers).getBody() + deleteUser(3, headers).getBody();
 	}
 
-	public static HttpHeaders madeCookie() {
+	public static HttpHeaders configurationCookie() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(List.of(MediaType.APPLICATION_JSON));
 		headers.setContentType(MediaType.APPLICATION_JSON);
